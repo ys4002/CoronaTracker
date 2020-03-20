@@ -95,7 +95,9 @@ public class FileUtil {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            formattedMap.put(formatter.parse(newDate),entry.getValue());
+            if(Integer.valueOf(entry.getValue()) != 0) {
+                formattedMap.put(formatter.parse(newDate), entry.getValue());
+            }
         }
 
         return formattedMap;
