@@ -158,7 +158,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
             Log.i("result: ", "> " + result);
             jsonData = new Gson().fromJson(result, JsonData.class);
-            count.setText("Total Count: " + jsonData.getConfirmed().getLatest().toString());
+            count.setText(" Total Count: " + jsonData.getConfirmed().getLatest().toString());
             setDropDown(jsonData);
         }
     }
