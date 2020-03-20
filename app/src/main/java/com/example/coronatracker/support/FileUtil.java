@@ -10,6 +10,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
 
 public class FileUtil {
     public static void writeToFile(String data, String fileName, Context context) {
@@ -53,5 +64,40 @@ public class FileUtil {
         }
 
         return ret;
+    }
+
+    public static Map<String,String> sortMap(Map<String,String> map) {
+        Set<Map.Entry<String, String>> entries = map.entrySet();
+        Map<String,String> sortedMap = new LinkedHashMap<>();
+
+        TreeMap<String, String> sorted = new TreeMap<>(map);
+        Set<Map.Entry<String, String>> mappings = sorted.entrySet();
+
+        for(Map.Entry<String, String> entry : mappings)
+        {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedMap;
+    }
+
+    public static TreeMap<Date,String> formatKey(Map<String,String> map) throws ParseException {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("M-dd-yy");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date date=null;
+        TreeMap<Date,String> formattedMap = new TreeMap<>();
+        for(Map.Entry<String,String> entry : map.entrySet()) {
+            String newDate = null;
+            String oldDate = entry.getKey().replace("/","-");
+            try {
+                date = dateFormat.parse(oldDate);
+                newDate = formatter.format(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            formattedMap.put(formatter.parse(newDate),entry.getValue());
+        }
+
+        return formattedMap;
     }
 }
