@@ -8,13 +8,15 @@
                 android:id="@+id/spinnerCountry"
                 android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:background="@drawable/custom_spinner" />
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/barGraph"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/spinnerCountry"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="48dp"></com.github.mikephil.charting.charts.BarChart>
-    </RelativeLayout>
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barGraph"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/spinnerCountry"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="58dp"
+        ></com.github.mikephil.charting.charts.BarChart>
+</RelativeLayout>

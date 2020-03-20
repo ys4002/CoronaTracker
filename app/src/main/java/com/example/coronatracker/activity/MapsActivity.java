@@ -177,6 +177,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 android.R.layout.simple_spinner_item, countries);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+        if(countries.contains("India")) {
+            int spinnerPosition = adapter.getPosition("India");
+            spinner.setSelection(spinnerPosition);
+        }
         locations = jsonData.getConfirmed().getLocations();
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

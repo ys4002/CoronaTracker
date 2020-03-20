@@ -72,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, countries);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCountry.setAdapter(adapter);
+        if(countries.contains("India")) {
+            int spinnerPosition = adapter.getPosition("India");
+            spinnerCountry.setSelection(spinnerPosition);
+        }
 
         spinnerCountry.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -111,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
 
                 barChart.setMaxVisibleValueCount(max);
                 BarDataSet barDataSet = new BarDataSet(barEntries, "No. of Cases");
-                barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                barDataSet.setColors(ColorTemplate.getHoloBlue());
 
                 BarData data = new BarData(barDataSet);
                 data.setBarWidth(0.6f);
