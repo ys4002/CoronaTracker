@@ -13,18 +13,21 @@
 
         <TextView
             android:id="@+id/count"
-            android:layout_width="210dp"
+            android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_alignLeft="@+id/spinner"
             android:layout_alignParentTop="true"
-            android:textSize="20sp" />
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="@drawable/cell"/>
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="195dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignRight="@+id/count"
             android:layout_alignParentTop="true"
+            android:layout_gravity="center|center_horizontal"
             android:background="@drawable/custom_spinner" />
     </TableRow>
 
